@@ -4,33 +4,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Encuesta - Pacientes HC</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-light d-flex flex-column min-vh-100">
-    <div class="container-fluid">
 
-        <div class="card mb-4">
-            <div class="card-body text-center">
-                <h2>Pacientes - HC</h2>
+    <div class="container-fluid py-4">
 
-                <div class="d-grid gap-2">
-                    <a href="docpac.html" class="btn btn-primary">Documentación</a>
-                    <a href="pacienteEncuesta.html" class="btn btn-success">Encuestas</a>
+        <div class="card">
+            <div class="card-body">
+
+                <h2 class="text-center">Encuesta - Pacientes HC</h2>
+
+                <p class="text-center">
+                    <i>Para seguir mejorando cada día, tu opinión es nuestra mejor medicina.</i>
+                </p>
+
+
+                <!-- SELECCIÓN DEL ÁREA -->
+                <div class="mb-4">
+
+                    <label for="sector" class="form-label">
+                        <b>Seleccione el área sobre la que desea opinar:</b>
+                    </label>
+
+                    <select class="form-select" id="sector" onchange="mostrarSector()">
+
+                        <option value="">Seleccione un área</option>
+
+                        <option value="anestesiologia">Anestesiología</option>
+                        <option value="cardiologia">Cardiología</option>
+                        <option value="centro_cardiovascular">Centro Cardiovascular</option>
+                        <option value="cirugia_cardiaca">Cirugía cardíaca</option>
+                        <option value="cirugia_plastica">Cirugía plástica y quemados</option>
+                        <option value="cirugia_vascular">Cirugía vascular periférica</option>
+                        <option value="clinica_medica_a">Clínica médica A</option>
+                        <option value="clinica_medica_b">Clínica médica B</option>
+                        <option value="clinica_medica_c">Clínica médica C</option>
+                        <option value="cti">CTI</option>
+                        <option value="dermatologia">Dermatología</option>
+                        <option value="emergencia">Emergencia</option>
+                        <option value="endocrinologia">Endocrinología</option>
+                        <option value="gastroenterologia">Gastroenterología</option>
+                        <option value="geriatria">Geriatría</option>
+                        <option value="ginecotocologia_b">Ginecotocología B</option>
+                        <option value="hematologia">Hematología</option>
+                        <option value="infectologia">Infectología</option>
+                        <option value="medicina_del_deporte">Medicina del deporte</option>
+                        <option value="medicina_fisica_rehabilitacion">
+                            Medicina física y rehabilitación
+                        </option>
+                        <option value="nefrologia">Nefrología</option>
+                        <option value="neonatologia">Neonatología</option>
+                        <option value="neurocirugia">Neurocirugía</option>
+                        <option value="odontologia">Odontología</option>
+                        <option value="oftalmologia">Oftalmología</option>
+                        <option value="oncologia">Oncología</option>
+                        <option value="otorrinolaringologia">
+                            Otorrinolaringología
+                        </option>
+                        <option value="psiquiatria">Psiquiatría</option>
+                        <option value="quirurgica_a">Quirúrgica A</option>
+                        <option value="quirurgica_b">Quirúrgica B</option>
+                        <option value="quirurgica_f">Quirúrgica F</option>
+                        <option value="traumatologia_adultos">
+                            Traumatología y ortopedia de adultos
+                        </option>
+                        <option value="ue_autoinmunes_sistemicas">
+                            U.E. autoinmunes sistémicas
+                        </option>
+                        <option value="unidad_tabaquismo">
+                            Unidad de tabaquismo
+                        </option>
+                        <option value="urologia">Urología</option>
+
+                    </select>
 
                 </div>
+
+
+                <!-- INFORMACIÓN DEL ÁREA SELECCIONADA -->
+
+                <div id="areaSeleccionada" class="d-none">
+
+                    <div class="alert alert-primary">
+                        <b>Área seleccionada:</b>
+                        <span id="nombreArea"></span>
+                    </div>
+
+
+                    <!-- ENCUESTA -->
+
+                    <p>
+                        <b>¿Cómo calificarías la atención recibida?</b>
+                    </p>
+
+                    <form>
+
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                type="radio"
+                                name="opinion"
+                                id="deficiente">
+
+                            <label class="form-check-label" for="deficiente">
+                                Deficiente
+                            </label>
+                        </div>
+
+
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                type="radio"
+                                name="opinion"
+                                id="regular">
+
+                            <label class="form-check-label" for="regular">
+                                Regular
+                            </label>
+                        </div>
+
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input"
+                                type="radio"
+                                name="opinion"
+                                id="buena"
+                                checked>
+
+                            <label class="form-check-label" for="buena">
+                                Buena
+                            </label>
+                        </div>
+
+
+                        <!-- COMENTARIOS -->
+
+                        <div class="mb-3">
+
+                            <label for="comentarios" class="form-label">
+                                Comentarios o Sugerencias
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="comentarios"
+                                rows="3">
+                            </textarea>
+
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">
+                            Enviar respuestas
+                        </button>
+
+                    </form>
+
+                </div>
+
             </div>
         </div>
 
     </div>
 
+
+    <!-- FOOTER -->
+
+    <footer class="bg-dark text-white text-center py-4 mt-auto">
+
+        <p class="mb-0">
+            &copy; Hospital de Clínicas
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function mostrarSector() {
+
+            let selector = document.getElementById("sector");
+
+            let valor = selector.value;
+
+            let nombre = selector.options[selector.selectedIndex].text;
+
+            let area = document.getElementById("areaSeleccionada");
+
+            let nombreArea = document.getElementById("nombreArea");
+
+
+            if (valor === "") {
+
+                area.classList.add("d-none");
+
+            } else {
+
+                area.classList.remove("d-none");
+
+                nombreArea.textContent = nombre;
+
+            }
+
+        }
+
+    </script>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
-<footer class="bg-dark text-white text-center py-4 mt-auto">
-    <p class="mb-0">&copy; Hospital de Clínicas</p>
-    </div>
-</footer>
 
 </html>
