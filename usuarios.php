@@ -1,38 +1,30 @@
 <?php
-
 require "conexion.php";
-$sql = "SELECT id, nombre, email, rol,from usuario where activo=1";
+
+$sql = "SELECT id, nombre, email, rol FROM funcionarios WHERE activo = 1";
 $stmt = $pdo->query($sql);
-$usuarios = stmt->fetchAll();
+$funcionarios = $stmt->fetchAll();
 ?>
 
-<<div
-    class="table-responsive"
->
-    <table
-        class="table table-primary"
-    >
+<div class="table-responsive">
+    <table class="table table-primary">
         <thead>
             <tr>
-                <th scope="col">
-                </th>
-                <th scope="col">Column 2</th>
-                <th scope="col">Column 3</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Rol</th>
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($usuarios as $u): ?>
-            <tr >
-                <td><?= $u["nombre"]?></td>
-                <td><?= $u["id"]?</td>
-                <td><?= $u["email"]?</td>
+            <?php foreach ($funcionarios as $f): ?>
+            <tr>
+                <td><?= htmlspecialchars($f["nombre"]) ?></td>
+                <td><?= htmlspecialchars($f["id"]) ?></td>
+                <td><?= htmlspecialchars($f["email"]) ?></td>
+                <td><?= htmlspecialchars($f["rol"]) ?></td>
             </tr>
-            
-<?php end foreach 
-
-?>
-
-
+            <?php endforeach; ?>
         </tbody>
     </table>
-
+</div>
