@@ -1,17 +1,15 @@
 <?php
 
- $dsn = "mysql:host=localhost;dbname=sigsm;charset=utf8m4"
+$dsn = "mysql:host=localhost;dbname=sigsm;charset=utf8mb4";
 
- try{
+try {
+    $pdo = new PDO($dsn, "root", "", [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
 
-    $pdo = new PDO ($dsn, "root", ""[
-    PDO::ATTR_ERRMODE =>PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO:: FETCH_ASOC
-  )];
-
-    } catch (PDOEception $e) {
-
-          die ("error de conexión:" . $e->getMessage());
-    }
+} catch (PDOException $e) {
+    die("Error de conexión: " . $e->getMessage());
+}
 
 ?>
